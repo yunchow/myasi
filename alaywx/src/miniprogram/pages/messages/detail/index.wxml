@@ -1,0 +1,38 @@
+<view class="container">
+  <block wx:for="{{messages}}" wx:key="id">
+    <view class="article-card" bindtap="onTapMessage" data-id="{{item.id}}">
+      
+      <view class="card-title">{{item.displayTitle}}</view>
+      
+      <!-- Type: Multi-image row -->
+      <block wx:if="{{item.displayType === 'multi'}}">
+        <view class="image-row">
+          <image class="thumb-small" src="https://picsum.photos/200/200?random={{index}}1" mode="aspectFill"></image>
+          <image class="thumb-small" src="https://picsum.photos/200/200?random={{index}}2" mode="aspectFill"></image>
+          <image class="thumb-small" src="https://picsum.photos/200/200?random={{index}}3" mode="aspectFill"></image>
+        </view>
+      </block>
+      
+      <!-- Type: Single large image -->
+      <block wx:else>
+        <image class="thumb-large" src="https://picsum.photos/600/300?random={{index}}" mode="aspectFill"></image>
+      </block>
+      
+      <view class="card-footer">
+        <view class="source-left">
+           <text wx:if="{{item.showTag}}" class="tag-blue">常看的号</text>
+           <text class="source-name">{{item.authorName}}</text>
+        </view>
+        <view class="action-btn">
+          <text wx:if="{{item.displayType === 'multi'}}" style="margin-top:-6px;">...</text>
+          <text wx:else style="font-size:12px;">×</text>
+        </view>
+      </view>
+      
+    </view>
+  </block>
+  
+  <view wx:if="{{messages.length === 0 && !loading}}" class="empty-state">
+    <text class="empty-text">暂无历史消息</text>
+  </view>
+</view>

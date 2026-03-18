@@ -1,0 +1,70 @@
+<view class="container">
+  <!-- Custom Navigation Bar Placeholder if needed, otherwise using system nav bar -->
+  
+  <scroll-view scroll-y class="content" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh" refresher-background="#000000" refresher-default-style="white">
+    <!-- Header Area -->
+    <view class="header-section">
+      <!-- Total Assets Card -->
+      <view class="overview-card {{headerClass}}" style="background: {{headerBg}};">
+        <view class="row between">
+          <text class="label">总资产 (CNY)</text>
+          <view class="badge" wx:if="{{layers.length > 0}}">{{layers.length}}</view>
+        </view>
+        <view class="total-amount">{{totalAmount}}</view>
+        
+        <view class="divider"></view>
+        
+        <view class="row between">
+          <view class="col">
+            <text class="label">总盈亏</text>
+            <view class="row gap-s">
+              <text class="value {{totalPnl >= 0 ? 'text-positive' : 'text-negative'}}">{{totalPnl >= 0 ? '+' : ''}}{{totalPnlStr}}</text>
+            </view>
+          </view>
+          <view class="col" style="align-items: flex-end;">
+             <text class="label">收益率</text>
+             <text class="value {{totalPnl >= 0 ? 'text-positive' : 'text-negative'}}">{{totalPnlPctStr}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Layers List -->
+    <view class="layers-section">
+      <view class="section-header row between">
+        <text class="section-title">分层组合</text>
+        <view class="icon-btn-add" bindtap="onAddLayer">
+          <text class="add-icon">+</text>
+        </view>
+      </view>
+
+      <block wx:for="{{layers}}" wx:key="id">
+        <view class="layer-card" bindtap="onLayerTap" data-id="{{item.layer.id}}" style="background: {{item.bg}};">
+          <view class="layer-color-strip" style="background-color: {{item.color}}"></view>
+          <view class="layer-content">
+            <view class="row between mb-8">
+              <text class="layer-name">{{item.layer.name}}</text>
+              <text class="layer-asset">{{item.totalValueStr}}</text>
+            </view>
+            <view class="row between">
+              <view class="tags">
+                <text class="tag">{{item.keyMetricStr}}</text>
+                <text class="tag" wx:if="{{item.keySignalCount > 0}}">{{item.keySignalCount}} 提醒</text>
+              </view>
+              <text class="layer-pnl {{item.pnl >= 0 ? 'text-positive' : 'text-negative'}}">
+                {{item.pnl >= 0 ? '+' : ''}}{{item.pnlStr}} ({{item.pnlPctStr}})
+              </text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <!-- Empty State -->
+      <view wx:if="{{layers.length === 0}}" class="empty-state">
+        <image class="empty-icon" src="/assets/layers.png" mode="aspectFit" style="opacity: 0.3; width: 64px; height: 64px;"></image>
+        <text class="empty-desc">创建分层来管理你的投资组合</text>
+        <!-- Button removed as requested -->
+      </view>
+    </view>
+  </scroll-view>
+</view>

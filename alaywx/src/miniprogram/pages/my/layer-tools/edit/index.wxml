@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="form-group">
+    <view class="form-item">
+      <text class="label">名称</text>
+      <input class="input" placeholder="请输入分层名称" value="{{formData.name}}" bindinput="onInputChange" data-field="name" />
+    </view>
+    <view class="form-item">
+      <text class="label">币种</text>
+      <picker mode="selector" range="{{currencies}}" value="{{currencyIndex}}" bindchange="onCurrencyChange">
+        <view class="picker-value">{{formData.currency}}</view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="label">目标止盈 (%)</text>
+      <input class="input" type="digit" placeholder="0" value="{{formData.targetProfitPct}}" bindinput="onInputChange" data-field="targetProfitPct" />
+    </view>
+    <view class="form-item">
+      <text class="label">目标止损 (%)</text>
+      <input class="input" type="digit" placeholder="0" value="{{formData.targetLossPct}}" bindinput="onInputChange" data-field="targetLossPct" />
+    </view>
+    <view class="form-item">
+      <text class="label">核心指标</text>
+      <input class="input" placeholder="如：最大回撤" value="{{formData.keyMetric}}" bindinput="onInputChange" data-field="keyMetric" />
+    </view>
+  </view>
+
+  <view class="btn-area">
+    <button class="btn-save" bindtap="onSave">保存</button>
+  </view>
+</view>

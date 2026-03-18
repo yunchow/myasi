@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="header">
+    <text class="title">分类管理</text>
+    <view class="add-btn" bindtap="onAdd">+ 新建分类</view>
+  </view>
+
+  <scroll-view scroll-y class="list">
+    <block wx:if="{{categories.length > 0}}">
+      <view class="item" wx:for="{{categories}}" wx:key="_id">
+        <view class="content">
+          <text class="name">{{item.name}}</text>
+          <text class="priority">优先级: {{item.priority}}</text>
+        </view>
+        <view class="actions">
+          <view class="action-btn edit" bindtap="onEdit" data-item="{{item}}">编辑</view>
+          <view class="action-btn delete" bindtap="onDelete" data-id="{{item._id || item.id}}" data-name="{{item.name}}">删除</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty">
+      <text>暂无分类数据</text>
+    </view>
+  </scroll-view>
+
+  <!-- Edit Modal/Overlay -->
+  <view class="modal-mask" wx:if="{{isEditing}}">
+    <view class="modal">
+      <view class="modal-header">
+        <text>{{editingId ? '编辑分类' : '新建分类'}}</text>
+      </view>
+      <view class="modal-content">
+        <view class="form-item">
+          <text class="label">名称</text>
+          <input class="input" placeholder="请输入分类名称" value="{{formData.name}}" bindinput="onInputChange" data-field="name" />
+        </view>
+        <view class="form-item">
+          <text class="label">优先级 (越小越靠前)</text>
+          <input class="input" type="number" placeholder="0" value="{{formData.priority}}" bindinput="onInputChange" data-field="priority" />
+        </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn cancel" bindtap="onCancel">取消</view>
+        <view class="btn save" bindtap="onSave">保存</view>
+      </view>
+    </view>
+  </view>
+</view>

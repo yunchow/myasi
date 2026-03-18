@@ -1,0 +1,161 @@
+page {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.list {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-content {
+  padding: 10px 16px 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.icon-btn-add {
+  padding: 5px;
+}
+
+.add-icon {
+  font-size: 20px;
+  color: #0A84FF;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chip {
+  padding: 6px 12px;
+  background-color: #1C1C1E;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #8E8E93;
+  transition: all 0.2s;
+}
+
+.chip.selected {
+  background-color: #FF9500;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.card {
+  background-color: #1C1C1E;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #3A3A3C;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-left {
+  flex: 1;
+  padding-right: 8px;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.asset-symbol {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.asset-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(235, 235, 245, 0.6);
+}
+
+.position-info {
+  color: #8E8E93;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.card-right {
+  align-items: flex-end;
+}
+
+.card-label {
+  color: #8E8E93;
+  font-size: 12px;
+}
+
+.market-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.card-row.bottom {
+  margin-top: 10px;
+  align-items: center;
+}
+
+.pnl-info {
+  flex: 1;
+}
+
+.pnl-pct-info {
+  align-items: flex-end;
+}
+
+.pnl-value {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.positive {
+  color: #5ACF9A;
+}
+
+.negative {
+  color: #FF453A;
+}
+
+.empty-state {
+  padding: 30px 0;
+  align-items: center;
+}
+
+.empty-text {
+  color: #8E8E93;
+  font-size: 14px;
+}

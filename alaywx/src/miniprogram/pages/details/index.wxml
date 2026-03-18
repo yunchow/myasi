@@ -1,0 +1,60 @@
+<view class="container">
+  <scroll-view scroll-y class="list" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh" refresher-background="#000000" refresher-default-style="white">
+    <view class="scroll-content">
+      <view class="section-header row between">
+        <text class="section-title">资产明细</text>
+        <view class="icon-btn-add" bindtap="onAddLayer">
+          <text class="add-icon">+</text>
+        </view>
+      </view>
+      
+      <view class="filter-row">
+          <block wx:for="{{filters}}" wx:key="key">
+            <view wx:if="{{item.key === 'all' || counts[item.key] > 0}}" 
+                  class="chip {{filter === item.key ? 'selected' : ''}}" 
+                  bindtap="onFilterSelect" 
+                  data-filter="{{item.key}}">
+              {{item.label}} {{counts[item.key]}}
+            </view>
+          </block>
+        </view>
+    
+    <block wx:for="{{rows}}" wx:key="assetId">
+      <view class="card" style="background: {{item.bg}};">
+        <view class="card-row">
+          <view class="card-left">
+            <view class="asset-info">
+              <text class="asset-symbol">{{item.symbol}}</text>
+              <text class="asset-name">{{item.name}}</text>
+            </view>
+            <text class="position-info">{{item.type}} · 数量 {{item.quantity}} · 成本 {{item.costStr}}</text>
+          </view>
+          <view class="card-right">
+            <text class="card-label">盈亏率</text>
+            <text class="pnl-value {{item.pnlPct >= 0 ? 'positive' : 'negative'}}">
+              {{item.pnlPct >= 0 ? '+' : ''}}{{item.pnlPctStr}}
+            </text>
+          </view>
+        </view>
+        
+        <view class="card-row bottom">
+          <view class="pnl-info">
+            <text class="card-label">市值</text>
+            <text class="market-value">{{item.marketValueStr}}</text>
+          </view>
+          <view class="pnl-pct-info">
+            <text class="card-label">盈亏</text>
+            <text class="pnl-value {{item.pnl >= 0 ? 'positive' : 'negative'}}">
+              {{item.pnl >= 0 ? '+' : ''}}{{item.pnlStr}}
+            </text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <view wx:if="{{rows.length === 0}}" class="empty-state">
+      <text class="empty-text">暂无数据</text>
+    </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/layers/index",
+    "pages/layers/edit",
+    "pages/layers/detail",
+    "pages/layers/position",
+    "pages/layers/transaction",
+    "pages/layers/signal",
+    "pages/details/index",
+    "pages/messages/index",
+    "pages/messages/detail/index",
+    "pages/my/index",
+    "pages/my/layer-tools/index",
+    "pages/my/layer-tools/edit/index",
+    "pages/my/categories/index",
+    "pages/my/data/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "小狐狸账本",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#000000"
+  },
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#0A84FF",
+    "backgroundColor": "#000000",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/layers/index",
+        "text": "分层",
+        "iconPath": "assets/layers.png",
+        "selectedIconPath": "assets/layers-active.png"
+      },
+      {
+        "pagePath": "pages/details/index",
+        "text": "资产",
+        "iconPath": "assets/details.png",
+        "selectedIconPath": "assets/details-active.png"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "text": "消息",
+        "iconPath": "assets/messages.png",
+        "selectedIconPath": "assets/messages-active.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "assets/my.png",
+        "selectedIconPath": "assets/my-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

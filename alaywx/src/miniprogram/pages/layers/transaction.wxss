@@ -1,0 +1,74 @@
+.chip {
+  padding: 8px 16px;
+  background-color: #2C2C2E;
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+
+.chip.selected {
+  background-color: rgba(10, 132, 255, 0.2);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.section-title {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.form-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.label {
+  font-size: 16px;
+  color: var(--text-main);
+  min-width: 80px;
+}
+
+.input-clean {
+  text-align: right;
+  color: var(--text-main);
+  font-size: 16px;
+  flex: 1;
+}
+
+.picker-value {
+  color: var(--text-main);
+  font-size: 16px;
+}
+
+.ph {
+  color: var(--text-muted);
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.actions-area {
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mb-16 { margin-bottom: 16px; }
+.mt-16 { margin-top: 16px; }

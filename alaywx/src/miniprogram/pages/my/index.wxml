@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="profile-section">
+    <view class="avatar-wrapper">
+       <image class="avatar" src="/assets/icon.png" mode="aspectFill"></image>
+    </view>
+    <view class="info">
+      <view class="nickname">微信用户</view>
+      <text class="user-id">微信号：wxid_xxxxx</text>
+    </view>
+  </view>
+
+  <view class="group">
+    <view class="row" bindtap="onTapTools" data-page="MyLayerTools">
+      <text class="label">分层管理</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="row" bindtap="onTapTools" data-page="MyCategories">
+      <text class="label">分类管理</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+  <view class="center" style="margin-top:30px;font-size:12px;text-align: center;color:gray;">——— 小狐狸账本 * 你手里的AI投资管家 ———</view>
+</view>
+

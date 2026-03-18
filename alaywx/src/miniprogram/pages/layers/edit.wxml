@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="section-title">名称</view>
+  <input class="input" value="{{name}}" bindinput="onNameInput" placeholder="例如：核心层 / 交易层 / 安全层" placeholder-class="input-placeholder" />
+
+  <view class="section-title" style="margin-top: 18px;">首页关键指标</view>
+  <view class="chips">
+    <view class="chip {{keyMetric === 'totalValue' ? 'selected' : ''}}" bindtap="onKeyMetricChange" data-value="totalValue">总资产</view>
+    <view class="chip {{keyMetric === 'pnl' ? 'selected' : ''}}" bindtap="onKeyMetricChange" data-value="pnl">盈亏</view>
+    <view class="chip {{keyMetric === 'pnlPct' ? 'selected' : ''}}" bindtap="onKeyMetricChange" data-value="pnlPct">盈亏率</view>
+  </view>
+
+  <view class="section-title" style="margin-top: 18px;">目标（%）</view>
+  <view class="row-inputs">
+    <view class="input-group">
+      <text class="input-label">盈利目标</text>
+      <input class="input" type="digit" value="{{targetProfitPct}}" bindinput="onProfitInput" placeholder="例如：12" placeholder-class="input-placeholder" />
+    </view>
+    <view class="input-group">
+      <text class="input-label">亏损目标</text>
+      <input class="input" type="digit" value="{{targetLossPct}}" bindinput="onLossInput" placeholder="例如：-8" placeholder-class="input-placeholder" />
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-primary" bindtap="onSave" disabled="{{!name}}">保存</button>
+    <button class="btn-secondary" bindtap="onCancel">取消</button>
+  </view>
+</view>

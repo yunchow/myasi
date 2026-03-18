@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="section-title">交易类型</view>
+  <view class="row gap-m mb-16">
+    <block wx:for="{{types}}" wx:key="value">
+      <view class="chip {{type === item.value ? 'selected' : ''}}" bindtap="onTypeSelect" data-value="{{item.value}}">
+        {{item.label}}
+      </view>
+    </block>
+  </view>
+
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">日期</text>
+      <picker mode="date" value="{{date}}" bindchange="onDateChange">
+        <view class="picker-value">{{date}}</view>
+      </picker>
+    </view>
+    <view class="divider"></view>
+    
+    <view class="input-row">
+      <text class="label">数量</text>
+      <input class="input-clean" type="digit" value="{{quantity}}" bindinput="onInput" data-field="quantity" placeholder="0" placeholder-class="ph"/>
+    </view>
+    <view class="divider"></view>
+    
+    <view class="input-row">
+      <text class="label">价格</text>
+      <input class="input-clean" type="digit" value="{{price}}" bindinput="onInput" data-field="price" placeholder="0.00" placeholder-class="ph"/>
+    </view>
+    <view class="divider"></view>
+    
+    <view class="input-row">
+      <text class="label">费用</text>
+      <input class="input-clean" type="digit" value="{{fee}}" bindinput="onInput" data-field="fee" placeholder="0.00" placeholder-class="ph"/>
+    </view>
+  </view>
+
+  <view class="section-title mt-16">备注</view>
+  <view class="form-card">
+    <textarea class="textarea" value="{{note}}" bindinput="onInput" data-field="note" placeholder="可选备注..." placeholder-class="ph" auto-height style="min-height: 80px; width: 100%; color: white;"></textarea>
+  </view>
+
+  <view class="actions-area">
+    <button class="btn-primary w-full" bindtap="onSave">保存交易</button>
+  </view>
+</view>

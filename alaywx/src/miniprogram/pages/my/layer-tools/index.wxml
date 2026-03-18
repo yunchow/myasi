@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="header">
+    <text class="title">分层管理</text>
+    <view class="add-btn" bindtap="onAddLayer">+ 新建分层</view>
+  </view>
+
+  <scroll-view scroll-y class="list">
+    <block wx:if="{{layers.length > 0}}">
+      <view class="item" wx:for="{{layers}}" wx:key="_id">
+        <view class="color-dot" style="background-color: {{item.color}}"></view>
+        <view class="content">
+          <view class="name-row">
+            <text class="name">{{item.name}}</text>
+            <text class="currency">{{item.currency}}</text>
+          </view>
+          <view class="sub-info">
+            <text>目标盈亏: +{{item.targetProfitPct}}% / -{{item.targetLossPct}}%</text>
+            <text wx:if="{{item.keyMetric}}" style="margin-left: 10px">指标: {{item.keyMetric}}</text>
+          </view>
+        </view>
+        <view class="actions">
+          <view class="action-btn edit" bindtap="onEditLayer" data-item="{{item}}">编辑</view>
+          <view class="action-btn delete" bindtap="onDeleteLayer" data-id="{{item._id || item.id}}" data-name="{{item.name}}">删除</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty">
+      <text>暂无分层数据</text>
+    </view>
+  </scroll-view>
+</view>

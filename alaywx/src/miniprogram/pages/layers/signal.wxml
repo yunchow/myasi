@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="section-title">触发条件</view>
+  <view class="row gap-m mb-16">
+    <block wx:for="{{triggers}}" wx:key="value">
+      <view class="chip {{trigger === item.value ? 'selected' : ''}}" bindtap="onTriggerSelect" data-value="{{item.value}}">
+        {{item.label}}
+      </view>
+    </block>
+  </view>
+
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">阈值 (%)</text>
+      <input class="input-clean" type="digit" value="{{thresholdPct}}" bindinput="onThresholdInput" placeholder="例如：10" placeholder-class="ph"/>
+    </view>
+    <view class="divider"></view>
+    
+    <view class="input-row">
+      <text class="label">启用</text>
+      <switch checked="{{enabled}}" bindchange="onEnabledChange" color="#0A84FF"/>
+    </view>
+  </view>
+
+  <view class="actions-area">
+    <button class="btn-primary w-full" bindtap="onSave" disabled="{{!thresholdPct}}">保存提醒</button>
+    <button wx:if="{{id}}" class="btn-danger w-full mt-16" bindtap="onDelete">删除提醒</button>
+  </view>
+</view>

@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- Header with Gradient -->
+  <view class="header-section">
+    <view class="layer-header-card">
+      <view class="row between">
+        <text class="layer-title-large">{{layerName}}</text>
+        <view class="badge">{{positions.length}} 持仓</view>
+      </view>
+      
+      <view class="row mt-16">
+        <view class="col flex-1">
+          <text class="label-light">总资产</text>
+          <text class="amount-large">{{totalValueStr}}</text>
+        </view>
+        <view class="col flex-1 items-end">
+          <text class="label-light">总盈亏</text>
+          <text class="amount-medium {{totalPnl >= 0 ? 'text-positive' : 'text-negative'}}">
+            {{totalPnl >= 0 ? '+' : ''}}{{totalPnlStr}}
+          </text>
+          <text class="text-s mt-4 {{totalPnl >= 0 ? 'text-positive' : 'text-negative'}}" style="opacity: 0.8;">
+            {{totalPctStr}}
+          </text>
+        </view>
+      </view>
+
+      <view class="action-bar mt-16">
+        <button class="btn-glass flex-1 mr-8" bindtap="onAddPosition">
+          <text>+ 录入资产</text>
+        </button>
+        <button class="btn-glass flex-1 ml-8" bindtap="onRebalance">
+          <text>⚖️ 再平衡</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- Position List -->
+  <scroll-view scroll-y class="list-section" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh">
+    <block wx:for="{{positions}}" wx:key="position.id">
+      <view class="position-card" bindtap="onPositionTap" data-id="{{item.position.id}}">
+        <view class="row between top-row">
+          <view class="row center">
+            <view class="icon-placeholder">{{item.asset.symbol[0]}}</view>
+            <view class="col ml-12">
+              <text class="text-m">{{item.asset.symbol}}</text>
+              <text class="text-xs mt-4">{{item.asset.name}}</text>
+            </view>
+          </view>
+          <view class="col items-end">
+            <text class="text-m">{{item.marketValueStr}}</text>
+            <text class="text-xs mt-4">持仓 {{item.position.quantity}}</text>
+          </view>
+        </view>
+        
+        <view class="divider-subtle"></view>
+        
+        <view class="row between bottom-row">
+          <view class="col">
+            <text class="text-xs">成本</text>
+            <text class="text-s">{{item.costStr}}</text>
+          </view>
+          <view class="col items-end">
+            <text class="text-xs">盈亏</text>
+            <view class="row gap-s">
+               <text class="text-s {{item.pnl >= 0 ? 'text-positive' : 'text-negative'}}">{{item.pnlStr}}</text>
+               <text class="text-s {{item.pnl >= 0 ? 'text-positive' : 'text-negative'}}">({{item.pnlPctStr}})</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <view wx:if="{{positions.length === 0}}" class="empty-state">
+      <text class="empty-text">暂无资产，点击“录入资产”开始。</text>
+    </view>
+    
+    <view style="height: 40px;"></view> <!-- Safe area -->
+  </scroll-view>
+</view>

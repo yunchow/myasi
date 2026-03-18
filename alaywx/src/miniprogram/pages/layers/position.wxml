@@ -1,0 +1,125 @@
+<scroll-view scroll-y class="container">
+  <view class="section-header">
+    <text class="text-l">归属分层</text>
+  </view>
+  <view class="chips-container">
+    <block wx:for="{{layers}}" wx:key="id">
+      <view class="chip {{selectedLayerId === item.id ? 'chip-selected' : ''}}" 
+            bindtap="onLayerSelect" 
+            data-id="{{item.id}}"
+            style="{{selectedLayerId === item.id ? 'background-color:' + item.tintColor + '40; border-color:' + item.tintColor : ''}}">
+        {{item.name}}
+      </view>
+    </block>
+    <view class="chip chip-add" bindtap="onAddLayer">+ 新建</view>
+  </view>
+
+  <view class="section-header mt-24">
+    <text class="text-l">资产信息</text>
+  </view>
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">代码</text>
+      <input class="input-clean" value="{{symbol}}" bindinput="onSymbolInput" placeholder="例如：BABA" placeholder-class="ph" auto-capitalization="characters"/>
+    </view>
+    <view class="divider"></view>
+    <view class="input-row">
+      <text class="label">名称</text>
+      <input class="input-clean" value="{{assetName}}" bindinput="onAssetNameInput" placeholder="例如：阿里巴巴" placeholder-class="ph"/>
+    </view>
+  </view>
+
+  <view class="row gap-m mt-16">
+    <view class="col flex-1">
+      <text class="label mb-8">类型</text>
+      <scroll-view scroll-x enable-flex class="h-scroll">
+        <view class="row gap-s">
+          <block wx:for="{{typeLabels}}" wx:key="t">
+            <view class="chip-small {{type === item.t ? 'active' : ''}}" bindtap="onTypeSelect" data-type="{{item.t}}">{{item.label}}</view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  
+  <view class="row gap-m mt-16">
+    <view class="col flex-1">
+      <text class="label mb-8">币种</text>
+      <view class="row gap-s">
+        <view class="chip-small {{currency === 'CNY' ? 'active' : ''}}" bindtap="onCurrencySelect" data-currency="CNY">CNY</view>
+        <view class="chip-small {{currency === 'USD' ? 'active' : ''}}" bindtap="onCurrencySelect" data-currency="USD">USD</view>
+        <view class="chip-small {{currency === 'HKD' ? 'active' : ''}}" bindtap="onCurrencySelect" data-currency="HKD">HKD</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-header mt-24">
+    <text class="text-l">持仓详情</text>
+  </view>
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">持有数量</text>
+      <input class="input-clean" type="digit" value="{{quantity}}" bindinput="onQuantityInput" placeholder="0" placeholder-class="ph"/>
+    </view>
+    <view class="divider"></view>
+    <view class="input-row">
+      <text class="label">总成本</text>
+      <input class="input-clean" type="digit" value="{{costTotal}}" bindinput="onCostInput" placeholder="0.00" placeholder-class="ph"/>
+    </view>
+    <view class="divider"></view>
+    <view class="input-row">
+      <text class="label">当前市价 (选填)</text>
+      <input class="input-clean" type="digit" value="{{manualPrice}}" bindinput="onManualPriceInput" placeholder="自动获取" placeholder-class="ph"/>
+    </view>
+  </view>
+
+  <!-- Transactions Section -->
+  <block wx:if="{{isEdit}}">
+    <view class="section-header mt-24 row between">
+      <text class="text-l">交易记录</text>
+      <view class="btn-small" bindtap="onAddTransaction">+ 新增</view>
+    </view>
+    <view class="list-card" wx:if="{{transactions.length > 0}}">
+      <block wx:for="{{transactions}}" wx:key="id">
+        <view class="list-item">
+          <view class="col">
+            <text class="text-m">{{item.type === 'buy' ? '买入' : item.type === 'sell' ? '卖出' : item.type}}</text>
+            <text class="text-xs">{{item.dateStr}}</text>
+          </view>
+          <view class="col items-end">
+            <text class="text-m">{{item.quantity}} @ {{item.priceStr}}</text>
+            <text class="text-xs">费用: {{item.fee}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else class="empty-hint">暂无交易记录</view>
+    
+    <!-- Signals Section -->
+    <view class="section-header mt-24 row between">
+      <text class="text-l">价格提醒</text>
+      <view class="btn-small" bindtap="onAddSignal">+ 新增</view>
+    </view>
+    <view class="list-card" wx:if="{{signals.length > 0}}">
+      <block wx:for="{{signals}}" wx:key="id">
+        <view class="list-item" bindtap="onEditSignal" data-id="{{item.id}}">
+          <view class="col">
+            <text class="text-m">{{item.desc}}</text>
+            <text class="text-xs">{{item.enabled ? '已启用' : '已禁用'}}</text>
+          </view>
+          <text class="text-xs">></text>
+        </view>
+      </block>
+    </view>
+    <view wx:else class="empty-hint">暂无提醒</view>
+  </block>
+
+  <view class="actions-area">
+    <button class="btn-primary w-full" bindtap="onSave" disabled="{{!symbol || !selectedLayerId}}">{{isEdit ? '保存修改' : '确认录入'}}</button>
+    
+    <button wx:if="{{isEdit}}" class="btn-danger w-full mt-12" bindtap="onDelete">删除资产</button>
+    <button wx:else class="btn-secondary w-full mt-12" bindtap="onCancel">取消</button>
+  </view>
+  
+  <view style="height: 60px;"></view>
+</scroll-view>

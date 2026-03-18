@@ -1,0 +1,122 @@
+page {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.list {
+  flex: 1;
+}
+
+.conversation-item {
+  display: flex;
+  flex-direction: row;
+  padding: 12px 16px;
+  align-items: center;
+  position: relative;
+  background-color: #000000;
+}
+
+.item-hover {
+  background-color: #1C1C1E;
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background-color: #2C2C2E; /* Placeholder color */
+}
+
+.badge-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: #FF3B30;
+  border-radius: 50%;
+  border: 1px solid #000000;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 0.5px solid #2C2C2E;
+  padding-bottom: 12px;
+  padding-top: 2px;
+  /* To align border with text, maybe remove padding-bottom and add margin? 
+     But flex item height is controlled by avatar usually. 
+     Let's use a pseudo element or separate view for divider if we want it inset.
+     For now, border-bottom on content is fine but it will move with content height.
+  */
+  min-height: 48px; 
+}
+
+/* Remove border for the last item if needed, but standard lists usually have it */
+/* .conversation-item:last-child .content { border-bottom: none; } */
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time {
+  font-size: 11px;
+  color: #636366; /* Darker gray for time */
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.bottom-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.preview {
+  flex: 1;
+  font-size: 13px;
+  color: #8E8E93;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.empty-state {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-text {
+  color: #8E8E93;
+  font-size: 14px;
+}

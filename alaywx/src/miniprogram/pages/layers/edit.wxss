@@ -1,0 +1,95 @@
+page {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.container {
+  padding: 16px;
+}
+
+.section-title {
+  color: rgba(235, 235, 245, 0.6);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.input {
+  background-color: #2C2C2E;
+  border: 1px solid #3A3A3C;
+  border-radius: 14px;
+  padding: 12px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.input-placeholder {
+  color: rgba(233, 240, 255, 0.35);
+}
+
+.chips {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #3A3A3C;
+  background-color: #2C2C2E;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.chip.selected {
+  border-color: rgba(10, 132, 255, 0.55);
+  background-color: rgba(10, 132, 255, 0.16);
+  color: #0A84FF;
+}
+
+.row-inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.input-group {
+  flex: 1;
+}
+
+.input-label {
+  color: #8E8E93;
+  font-size: 12px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn-primary {
+  flex: 1;
+  background-color: #0A84FF;
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-weight: 900;
+}
+
+.btn-primary[disabled] {
+  background-color: rgba(106, 166, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary {
+  background-color: #2C2C2E;
+  border: 1px solid #3A3A3C;
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-weight: 900;
+}
